@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div id="user">
-    <p>Imagem</p>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
