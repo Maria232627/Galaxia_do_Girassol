@@ -12,6 +12,11 @@ class SistemaPlanetario extends Model
         'nome',
         'qtd_planeta',
         'qtd_estrela',
-
     ];
+    public function estrela(){
+        return $this->hasMany('App\Models\estrela', 'sistema_planetario');
+    }
+    public function planeta(){
+        return $this->hasMany('App\Models\Planeta', 'sistema_planetario');
+    }
 }

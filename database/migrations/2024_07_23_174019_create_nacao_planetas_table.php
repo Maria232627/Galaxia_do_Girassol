@@ -16,10 +16,10 @@ return new class extends Migration
             $table->integer('qtd_ocupacao');
             $table->integer('qtd_colonizacao');
             $table->timestamps();
-            $table->bigIncrements('nacao');
-            $table->bigIncrements('planeta');
-            $table->foreign('nacao')->references('id')->on('nacao');
-            $table->foreign('planeta')->references('id')->on('planeta');
+            $table->unsignedBigInteger('nacao');
+            $table->unsignedBigInteger('planeta');
+            $table->foreign('nacao')->references('id')->on('nacoes');
+            $table->foreign('planeta')->references('id')->on('planetas');
 
 
         });

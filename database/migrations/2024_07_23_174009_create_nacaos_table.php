@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('especie');
-            $table->floatval('nivel_dominacao');
-            $table->floatval('nivel_desenv');
+            $table->float('nivel_dominacao');
+            $table->float('nivel_desenv');
             $table->timestamps();
         });
     }

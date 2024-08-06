@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('planetas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->floatval('diametro');
-            $table->strign('descricao');
-            $table->floatval('temperatura');
+            $table->float('diametro');
+            $table->string('descricao');
+            $table->float('temperatura');
             $table->integer('idade');
-            $table->floatval('gravidade');
-            $table->bolean('habitabilidade');
+            $table->float('gravidade');
+            $table->boolean('habitabilidade');
             $table->integer('qtd_satelite_natural');
             $table->timestamps();
-            $table->bigIncrements('sistema_planetario');
-            $table->foreign('sistema_planetario')->references('id')->on('sistema_planetario');
+            $table->unsignedBigInteger('sistema_planetario');
+            $table->foreign('sistema_planetario')->references('id')->on('sistema_planetarios');
         });
     }
 

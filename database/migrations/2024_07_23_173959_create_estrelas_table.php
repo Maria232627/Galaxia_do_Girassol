@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('estrelas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->floatval('diametro');
-            $table->strign('descricao');
-            $table->floatval('temperatura');
+            $table->float('diametro');
+            $table->string('descricao');
+            $table->float('temperatura');
             $table->integer('idade');
-            $table->floatval('gravidade');
+            $table->float('gravidade');
             $table->timestamps();
-            $table->bigIncrements('sistema_planetario');
-            $table->foreign('sistema_planetario')->references('id')->on('sistema_planetario');
+            $table->unsignedBigInteger('sistema_planetario');
+            $table->foreign('sistema_planetario')->references('id')->on('sistema_planetarios');
         });
     }
 

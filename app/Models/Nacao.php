@@ -14,4 +14,7 @@ class Nacao extends Model
         'nivel_dominacao',
         'nivel_desenv',
     ];
+    public function nacao(){
+        return $this->hasMany('App\Models\NacaoPlaneta', 'nacao');
+    }
 }

@@ -9,7 +9,15 @@ class NacaoPlaneta extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'planeta',
+        'nacao',
         'qtd_ocupacao',
-        'qtd_colonisacao',
+        'tipo_colonisacao',
     ];
+    public function planeta(){
+        return $this->belongsTo('App\Models\Planeta');
+    }
+    public function nacao(){
+        return $this->belongsTo('App\Models\Nacao');
+    }
 }

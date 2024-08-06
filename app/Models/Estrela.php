@@ -15,5 +15,9 @@ class Estrela extends Model
         'temperatura',
         'idade',
         'gravidade',
+        'sistema_planetario',
     ];
+    public function sistema_planetario(){
+        return $this->belongsTo('App\Models\SistemaPlanetario');
+    }
 }
