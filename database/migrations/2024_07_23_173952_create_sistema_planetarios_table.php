@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('sistema_planetarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->integer('qtd_planeta');
-            $table->integer('qtd_estrela');
             $table->timestamps();
         });
     }

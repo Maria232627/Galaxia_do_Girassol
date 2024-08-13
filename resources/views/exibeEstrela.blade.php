@@ -38,10 +38,10 @@
                         <td>{{ $item->gravidade}}</td>
 
                         <td style="text-align:center">
-                            <a href="/contatos/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
+                            <a href="/estrela/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
                         </td>
                         <td style="text-align:center">
-                            <a href="/contatos/apagar/{{$item->id}}" class="btn btn-outline-danger" 
+                            <a href="/estrela/apagar/{{$item->id}}" class="btn btn-outline-danger" 
                                onclick="return confirm('Tem certeza de que deseja remover?');">Deletar</a>
                         </td>
                     </tr>  

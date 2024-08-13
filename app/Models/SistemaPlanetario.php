@@ -10,8 +10,6 @@ class SistemaPlanetario extends Model
     use HasFactory;
     protected $fillable=[
         'nome',
-        'qtd_planeta',
-        'qtd_estrela',
     ];
     public function estrela(){
         return $this->hasMany('App\Models\estrela', 'sistema_planetario');

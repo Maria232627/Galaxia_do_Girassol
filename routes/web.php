@@ -20,7 +20,7 @@ Route::get('/', function () {
 //rotas Sistema Plantário
 Route::get('/sistema', [App\Http\Controllers\controllerSistemaPlanetario::class, 'index'])->name('exibeSistema');
 Route::get('/sistema/novo', [App\Http\Controllers\controllerSistemaPlanetario::class, 'create'])->name('novoSistema');
-Route::post('sistema', [App\Http\Controllers\controllerSistemaPlanetario::class, 'store'])->name('gravaNovoSistemas');
+Route::post('sistema', [App\Http\Controllers\controllerSistemaPlanetario::class, 'store'])->name('gravaNovoSistema');
 Route::get('/sistema/editar/{id}', [App\Http\Controllers\controllerSistemaPlanetario::class, 'edit'])->name('editarSistema');
 Route::post('sistema/{id}', [App\Http\Controllers\controllerSistemaPlanetario::class, 'update'])->name('atualizaSistema');
 Route::get('/sistema/apagar/{id}', [App\Http\Controllers\controllerSistemaPlanetario::class, 'destroy'])->name('deletaSistema');

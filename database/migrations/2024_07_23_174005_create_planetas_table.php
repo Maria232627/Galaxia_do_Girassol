@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('habitabilidade');
             $table->integer('qtd_satelite_natural');
             $table->timestamps();
-            $table->unsignedBigInteger('sistema_planetario');
+            $table->unsignedBigInteger('sistema_planetario')->nullable();
             $table->foreign('sistema_planetario')->references('id')->on('sistema_planetarios');
         });
     }
