@@ -1,18 +1,19 @@
 @extends('layout')
 @section('content')
+<div class="container py-4">
 <div class="card border">
-    <div class="card-body" id="form">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container-fluid">
-                <h1 class="mt-5 text-center">CRIE UM NOVO SISTEMA PLANETÁRIO</h1>
+    <div class="card-body">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="mt-5 text-center">ATUALIZE DO SISTEMA PLANETÁRIO</h1>
             </div>
         </div>
-        <form action="{{route('gravaNovoSistema')}}" method="POST" >
+        <form action="/Sistema/{{$dados->id}}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" class="form-control" name="nome" 
-                       placeholder="Informe o nome do sistema">
+                <label for="descricao">Nome:</label>
+                <input type="text" class="form-control" name="descricao" 
+                       value="{{$dados->nome}}">
             </div>
             <button type="submit" class="btn btn-outline-primary btn-sm">Salvar</button>
             <button onclick="window.location.href='{{route('inicio')}}';" type="button" 
@@ -20,4 +21,5 @@
         </form>
     </div> 
 </div> 
+</div>
 @endsection

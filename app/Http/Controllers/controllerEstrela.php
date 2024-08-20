@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estrela;
+use App\Models\SistemaPlanetario;
 use Illuminate\Support\Facades\DB;
 
 class controllerEstrela extends Controller
@@ -22,7 +23,8 @@ class controllerEstrela extends Controller
      */
     public function create()
     {
-        return view('novoEstrela');
+        $dados = SistemaPlanetario::all();
+        return view('novoEstrela', compact('sistema_planetario'));
     }
 
     /**

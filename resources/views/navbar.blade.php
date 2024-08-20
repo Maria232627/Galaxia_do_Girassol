@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div id="user">
+      <img src="{{asset('storage/imagens/logo.png')}}" id="logo" alt="logo">
     </div>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">

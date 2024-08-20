@@ -30,10 +30,10 @@ class controllerNacao extends Controller
      */
     public function store(Request $request)
     {
-        $dados = new Planeta();
+        $dados = new Nacao();
         $dados->nome = $request->input('nome');
         $dados->especie = $request->input('especie');
-        $dados->novel_dominacao = $request->input('nivel_dominacao');
+        $dados->nivel_dominacao = $request->input('nivel_dominacao');
         $dados->nivel_desenv = $request->input('nivel_desenv');
         if($dados->save())
             return redirect('/nacao')->with('success', 'Nação criada com sucesso!');
@@ -67,11 +67,11 @@ class controllerNacao extends Controller
     {
         $dados = Nacao::find($id);
         if(isset($dados)){
-            $dados = new Planeta();
+            $dados = new Nacao();
             $dados->nome = $request->input('nome');
             $dados->especie = $request->input('especie');
-            $dados->novel_dominacao = $request->input('nivel_dominacao');
-        $dados->nivel_desenv = $request->input('nivel_desenv');
+            $dados->nivel_dominacao = $request->input('nivel_dominacao');
+            $dados->nivel_desenv = $request->input('nivel_desenv');
             $dados->save();
             return redirect('/nacao')->with('success', 'Os dados da nação foram modificados de acordo com vossa vontade. :)');
         }
@@ -97,7 +97,7 @@ class controllerNacao extends Controller
 
     public function procurarNacao(Request $request){
         $dados = $request->input('nome');
-        $dados = DB::table('nacoes')->select('id', 'nome', 'especie','nivel_dominacao', 'nivel_desenv')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
+        $dados = DB::table('nacaos')->select('id', 'nome', 'especie','nivel_dominacao', 'nivel_desenv')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
         return view('exibirNacao', compact('dados'));
     }
 }

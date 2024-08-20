@@ -10,10 +10,6 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-        <img src="{{asset('storage/imagens/capa.png')}}" id="capa" alt="capa">
-    </div>
-  </div>
+  
 
 @endsection

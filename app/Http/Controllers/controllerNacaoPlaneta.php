@@ -23,7 +23,12 @@ class controllerNacaoPlaneta extends Controller
     {
         $dados = $this->NacaoPlaneta->where('planeta',$id)->get();
         $planeta = Planeta::find($id);
-        $dados->
+        $dados->nome = $planeta->nome;
+        foreach($dados as $item){
+            $nacao = nacao::find($item->id);
+            $item->nome = $nacao->nome;
+        }
+        return view('exibeDetalhesNacao', compact('dados'));
     }
 
     /**
@@ -31,7 +36,7 @@ class controllerNacaoPlaneta extends Controller
      */
     public function create()
     {
-        return view('novoNacao');
+
     }
 
     /**
@@ -63,10 +68,10 @@ class controllerNacaoPlaneta extends Controller
      */
     public function edit(string $id)
     {
-        $dados = NacaoPlaneta::find($id);
+       /* $dados = NacaoPlaneta::find($id);
         if(isset($dados)){
             return view('editarNacao',compact('dados'));
-        }
+        }*/
     }
 
     /**
@@ -74,17 +79,7 @@ class controllerNacaoPlaneta extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $dados = NacaoPlaneta::find($id);
-        if(isset($dados)){
-            $dados = new Planeta();
-            $dados->nome = $request->input('nome');
-            $dados->especie = $request->input('especie');
-            $dados->novel_dominacao = $request->input('nivel_dominacao');
-        $dados->nivel_desenv = $request->input('nivel_desenv');
-            $dados->save();
-            return redirect('/nacao')->with('success', 'Os dados da nação foram modificados de acordo com vossa vontade. :)');
-        }
-        return redirect('/nacao')->with('danger', 'Falha ao tentar modificar a nação. :(');
+      
     }
 
     /**
@@ -98,15 +93,5 @@ class controllerNacaoPlaneta extends Controller
             return redirect('/nacao')->with('success', 'A Nação foi destruida. Você a eliminou... ');
         }
         return redirect('/nacao')->with('danger', 'O seu poder não foi suficiente para destruir a Nação. Erro ao aliminá-la.');
-    }
-
-    public function pesquisarNacao(){
-        return view('pesquisa');
-    }
-
-    public function procurarNacao(Request $request){
-        $dados = $request->input('nome');
-        $dados = DB::table('nacoes')->select('id', 'nome', 'especie','nivel_dominacao', 'nivel_desenv')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
-        return view('exibirNacao', compact('dados'));
     }
 }
