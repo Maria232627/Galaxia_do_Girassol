@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" class="form-control" name="nome" 
-                       placeholder="Informe o nome do planeta">
+                       placeholder="Informe o nome da nação">
             </div>
             <div class="form-group">
                 <label for="nome">Espécie:</label>

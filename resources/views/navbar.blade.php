@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md " id="header">
     <div id="user">
       <img src="{{asset('storage/imagens/logo.png')}}" id="logo" alt="logo">
     </div>

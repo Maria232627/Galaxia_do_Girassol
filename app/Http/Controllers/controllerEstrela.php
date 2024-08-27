@@ -23,7 +23,7 @@ class controllerEstrela extends Controller
      */
     public function create()
     {
-        $dados = SistemaPlanetario::all();
+        $sistema_planetario = SistemaPlanetario::all();
         return view('novoEstrela', compact('sistema_planetario'));
     }
 

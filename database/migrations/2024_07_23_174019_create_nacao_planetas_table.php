@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('nacao');
             $table->unsignedBigInteger('planeta');
-            $table->foreign('nacao')->references('id')->on('nacoes');
+            $table->foreign('nacao')->references('id')->on('nacaos');
             $table->foreign('planeta')->references('id')->on('planetas');
 
 

@@ -8,11 +8,37 @@
 }
 
 #body{
-    background-image: url("../../public/storage/imagens/backgroundImage.png");
+    background-image: url("../../public/storage/imagens/universo.png");
     background-repeat: none;
     background-size: cover;
+    align-items: center;
+    justify-content: center;
 }
 
 #form {
     background: rgba(80, 52, 180, 0);
+}
+
+#girassol {
+    background-image: url("../../public/storage/imagens/girassol.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 50rem;
+    height: 50rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#slaa{
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lily Script One';
+    color: white;
+   
+}
+
+
+#header{
+    background-color: #ffe75d;
 }
