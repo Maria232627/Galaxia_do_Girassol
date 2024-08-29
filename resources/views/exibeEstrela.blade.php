@@ -11,7 +11,7 @@
         </div><br />
     @endif
     <div class="card-body">
-        <h5 class="card-title" style="text-align: center">Cadastro de Estrela</h5>
+        <h5 class="card-title" style="text-align: center">Estrelas descobertas na galáxia</h5>
             <table class="table table-ordered table-hover">
                 <thead>
                     <tr>

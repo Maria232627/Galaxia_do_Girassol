@@ -28,7 +28,7 @@ class controllerNacaoPlaneta extends Controller
             $nacao = nacao::find($item->id);
             $item->nome = $nacao->nome;
         }
-        return view('exibeDetalhesNacao', compact('dados'));
+        return view('exibeDetalhePlaneta', compact('dados'));
     }
 
     /**
@@ -36,7 +36,8 @@ class controllerNacaoPlaneta extends Controller
      */
     public function create()
     {
-
+        $dados->nome = $request->input('qtd_ocupacao');
+        $dados->diametro = $request->input('tipo_colonizacao');
     }
 
     /**

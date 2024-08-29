@@ -11,7 +11,7 @@
         </div><br />
     @endif
     <div class="card-body">
-        <h5 class="card-title" style="text-align: center">Cadastro de Planetas</h5>
+        <h5 class="card-title" style="text-align: center">Planetas descobertos na galáxia</h5>
             <table class="table table-ordered table-hover">
                 <thead>
                     <tr>
@@ -43,11 +43,11 @@
                         <td>{{ $item->qtd_satelite_natural}}</td>
 
                         <td style="text-align:center">
-                            <a href="/contatos/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
+                            <a href="/planeta/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
                         </td>
                         <td style="text-align:center">
-                            <a href="/contatos/apagar/{{$item->id}}" class="btn btn-outline-danger" 
-                               onclick="return confirm('Tem certeza de que deseja remover?');">Deletar</a>
+                            <a href="/planetas/apagar/{{$item->id}}" class="btn btn-outline-danger" 
+                               onclick="return confirm('Tem certeza de que deseja destruir esse planeta?');">Deletar</a>
                         </td>
                     </tr>  
                     @endforeach

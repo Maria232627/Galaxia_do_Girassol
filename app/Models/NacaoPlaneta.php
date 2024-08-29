@@ -12,7 +12,7 @@ class NacaoPlaneta extends Model
         'planeta',
         'nacao',
         'qtd_ocupacao',
-        'tipo_colonisacao',
+        'tipo_colonizacao',
     ];
     public function planeta(){
         return $this->belongsTo('App\Models\Planeta');

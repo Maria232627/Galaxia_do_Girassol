@@ -12,9 +12,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body id="body">
+    <header class="display-block">
     @component('navbar')
     @endcomponent
-    <main role="main" class="py-4">
+    <header>
+    <main role="main" id="slaa">
         @hasSection('content')
             @yield('content')
         @endif

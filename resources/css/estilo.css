@@ -11,8 +11,7 @@
     background-image: url("../../public/storage/imagens/universo.png");
     background-repeat: none;
     background-size: cover;
-    align-items: center;
-    justify-content: center;
+    display: block;
 }
 
 #form {
@@ -27,7 +26,8 @@
     height: 50rem;
     justify-content: center;
     align-items: center;
-
+    display: flex;
+    flex-direction: column;
 }
 
 #slaa{
@@ -35,10 +35,12 @@
     align-items: center;
     font-family: 'Lily Script One';
     color: white;
-   
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 
 #header{
-    background-color: #ffe75d;
+    background-color: #fccb44;
 }
