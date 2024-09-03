@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nome }}</td>
-                        <td>{{ $item->qtd_estrela }}</td>
+                        <td>{{ $item->qtd_estrela }}</td> 
                         <td>{{ $item->qtd_planeta }}</td>
 
                         <td style="text-align:center">

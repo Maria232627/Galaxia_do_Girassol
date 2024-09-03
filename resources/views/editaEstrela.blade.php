@@ -8,7 +8,7 @@
                 <h1 class="mt-5 text-center">ATUALIZE O CADASTRO DA ESTRELA</h1>
             </div>
         </div>
-        <form action="/livro/{{$dados->id}}" method="POST">
+        <form action="/estrela/{{$dados->id}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="nome">Nome:</label>

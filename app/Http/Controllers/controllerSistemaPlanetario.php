@@ -32,6 +32,7 @@ class controllerSistemaPlanetario extends Controller
     {
         $dados = new SistemaPlanetario();
         $dados->nome = $request->input('nome');
+        //$dados->qtd_estrela = 0;
         if($dados->save())
             return redirect('/sistema')->with('success', 'Sistema Planetário criado com sucesso!');
         return redirect('/sistema')->with('danger', 'Você não teve poder suficiente para criar o Sistema Planetário!');
@@ -51,9 +52,8 @@ class controllerSistemaPlanetario extends Controller
     public function edit(string $id)
     {
         $dados = SistemaPlanetario::find($id);
-        if(isset($dados)){
             return view('editaSistema',compact('dados'));
-        }
+        
     }
 
     /**
@@ -63,7 +63,6 @@ class controllerSistemaPlanetario extends Controller
     {
         $dados = SistemaPlanetario::find($id);
         if(isset($dados)){
-            $dados = new SistemaPlanetario();
             $dados->nome = $request->input('nome');
             $dados->save();
             return redirect('/sistema')->with('success', 'Os dados do Sisema Planetário foram modificados de acordo com vossa vontade. :)');
@@ -85,12 +84,14 @@ class controllerSistemaPlanetario extends Controller
     }
 
     public function pesquisarSistema(){
-        return view('pesquisa');
+        $dados["tabela"] = "sistema_planetarios";
+        return view('pesquisa', compact('dados'));
     }
 
     public function procurarSistema(Request $request){
-        $dados = $request->input('nome');
-        $dados = DB::table('sistemas')->select('id', 'nome')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
-        return view('exibirSistema', compact('dados'));
+        $nome = $request->input('nome');
+        $dados = DB::table('sistema_planetarios')->select('id', 'nome')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
+        //dd($dados);
+        return view('exibeSistema', compact('dados'));
     }
 }

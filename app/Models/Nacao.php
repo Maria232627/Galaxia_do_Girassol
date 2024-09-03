@@ -17,4 +17,7 @@ class Nacao extends Model
     public function nacao(){
         return $this->hasMany('App\Models\NacaoPlaneta', 'nacao');
     }
+    public function planeta(){
+        return $this->belongsTo('App\Models\Planeta');
+    }
 }

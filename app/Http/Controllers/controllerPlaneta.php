@@ -41,6 +41,9 @@ class controllerPlaneta extends Controller
         $dados->gravidade = $request->input('gravidade');
         $dados->habitabilidade = $request->input('habitabilidade');
         $dados->qtd_satelite_natural = $request->input('qtd_satelite_natural');
+        //$sistema=SistemaPlanetario::find($dados->sistema_planetario);
+        //$sistema->qtd_planeta = $sistema->qtd_planeta + 1;
+        //$sistema->save();
         if($dados->save())
             return redirect('/planeta')->with('success', 'Planeta criada com sucesso!');
         return redirect('/planeta')->with('danger', 'Você não teve poder suficiente para criar o planeta!');
@@ -61,9 +64,8 @@ class controllerPlaneta extends Controller
     public function edit(string $id)
     {
         $dados = Planeta::find($id);
-        if(isset($dados)){
-            return view('editarEstrela',compact('dados'));
-        }
+        $sistema_planetario = SistemaPlanetario::all();
+        return view('editaPlaneta',compact('dados', 'sistema_planetario'));
     }
 
     /**
@@ -73,7 +75,6 @@ class controllerPlaneta extends Controller
     {
         $dados = Planeta::find($id);
         if(isset($dados)){
-            $dados = new Planeta();
             $dados->nome = $request->input('nome');
             $dados->diametro = $request->input('diametro');
             $dados->descricao = $request->input('descricao');
@@ -101,11 +102,12 @@ class controllerPlaneta extends Controller
         return redirect('/planeta')->with('danger', 'O seu poder não foi suficiente para destruir a planeta. Erro ao aliminá-la.');
     }
 
-    public function pesquisarEstrela(){
-        return view('pesquisa');
+    public function pesquisarPlaneta(){
+        $dados["tabela"] = "planetas";
+        return view('pesquisa', compact('dados'));
     }
 
-    public function procurarEstrela(Request $request){
+    public function procurarPlaneta(Request $request){
         $dados = $request->input('nome');
         $dados = DB::table('planetas')->select('id', 'nome', 'diametro', 'descricao', 'temperatura', 'idade', 'gravidade', 'habitabilidade', 'qtd_satelite_natural')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
         return view('exibirPlaneta', compact('dados'));

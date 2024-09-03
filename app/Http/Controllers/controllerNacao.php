@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Nacao;
+use App\Models\Planeta;
 use Illuminate\Support\Facades\DB;
 
 class controllerNacao extends Controller
@@ -22,7 +23,8 @@ class controllerNacao extends Controller
      */
     public function create()
     {
-        return view('novoNacao');
+        $planeta = Planeta::all();
+        return view('novoNacao', compact('planeta'));
     }
 
     /**
@@ -55,9 +57,8 @@ class controllerNacao extends Controller
     public function edit(string $id)
     {
         $dados = Nacao::find($id);
-        if(isset($dados)){
-            return view('editarNacao',compact('dados'));
-        }
+        $planeta = Planeta::all();
+        return view('editaNacao',compact('dados', 'planeta'));
     }
 
     /**
@@ -67,7 +68,6 @@ class controllerNacao extends Controller
     {
         $dados = Nacao::find($id);
         if(isset($dados)){
-            $dados = new Nacao();
             $dados->nome = $request->input('nome');
             $dados->especie = $request->input('especie');
             $dados->nivel_dominacao = $request->input('nivel_dominacao');
@@ -92,7 +92,8 @@ class controllerNacao extends Controller
     }
 
     public function pesquisarNacao(){
-        return view('pesquisa');
+        $dados["tabela"] = "nacaos";
+        return view('pesquisa', compact('dados'));
     }
 
     public function procurarNacao(Request $request){

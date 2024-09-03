@@ -15,7 +15,7 @@
             @csrf
             <div class="form-group py-4">
                 <label for="texto">Texto para pesquisa</label>
-                <input type="text" class="form-control" name="texto" 
+                <input type="text" class="form-control" name="nome" 
                     placeholder="Informe o texto para pesquisar">
             </div>
             <button type="submit" class="btn btn-outline-primary btn-sm">Pesquisar</button>

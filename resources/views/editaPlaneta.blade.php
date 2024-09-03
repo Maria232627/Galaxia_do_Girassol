@@ -8,7 +8,7 @@
                 <h1 class="mt-5 text-center">ATUALIZE O CADASTRO DO PLANETA</h1>
             </div>
         </div>
-        <form action="/livro/{{$dados->id}}" method="POST">
+        <form action="/planeta/{{$dados->id}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="nome">Nome:</label>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="nome">Quantidade de satélites naturais:</label>
-                <input type="number" class="form-control" name="qtd_satelite_natural" value="{{$dados->qtd_satelite_natural}">
+                <input type="number" class="form-control" name="qtd_satelite_natural" value="{{$dados->qtd_satelite_natural}}">
             </div>
             <div class="form-group">
                 <label for="sistema_planetario">Selecione um sistema planetário</label>

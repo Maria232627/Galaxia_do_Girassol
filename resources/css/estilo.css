@@ -8,7 +8,7 @@
 }
 
 #body{
-    background-image: url("../../public/storage/imagens/universo.png");
+    
     background-repeat: none;
     background-size: cover;
     display: block;
@@ -31,6 +31,7 @@
 }
 
 #slaa{
+    background-image: url("../../public/storage/imagens/universo.png");
     justify-content: center;
     align-items: center;
     font-family: 'Lily Script One';

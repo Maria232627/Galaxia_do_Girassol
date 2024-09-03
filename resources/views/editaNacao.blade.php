@@ -8,24 +8,32 @@
                 <h1 class="mt-5 text-center">ATUALIZE O CADASTRO DA NAÇÃO</h1>
             </div>
         </div>
-        <form action="/livro/{{$dados->id}}" method="POST">
+        <form action="/nacao/{{$dados->id}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" class="form-control" name="titulo" value="{{$dados->nome}}">
+                <input type="text" class="form-control" name="nome" value="{{$dados->nome}}">
             </div>
             <div class="form-group">
                 <label for="ano">Espécie:</label>
-                <input type="text" class="form-control" name="ano" value="{{$dados->especie}}">
+                <input type="text" class="form-control" name="especie" value="{{$dados->especie}}">
             </div>
             <div class="form-group">
-                <label for="genero">Selecione o gênero do livro</label>
-                <select class="form-control" name="genero" id="genero" required>
-                    @foreach ($genero as $item)
-                       @if($dados->genero_id == $item->id)
-                            <option selected="selected" value="{{$item->id}}">{{$item->descricaoGenero}}</option>
+                <label for="nome">Nivel de dominação:</label>
+                <input type="text" class="form-control" name="nivel_dominacao" value="{{$dados->nivel_dominacao}}">
+            </div>
+            <div class="form-group">
+                <label for="nome">Nivel de desenvolvimento:</label>
+                <input type="text" class="form-control" name="nivel_desenv" value="{{$dados->nivel_desenv}}">
+            </div>
+            <div class="form-group">
+                <label for="sistema_planetario">Selecione um sistema planetário</label>
+                <select class="form-control" name="Planeta" id="nome" required>
+                    @foreach ($planeta as $item)
+                       @if($dados->planeta == $item->id)
+                            <option selected="selected" value="{{$item->id}}">{{$item->nome}}</option>
                         @else
-                            <option value="{{$item->id}}">{{$item->DescricaoGenero}}</option>
+                            <option value="{{$item->id}}">{{$item->nome}}</option>
                         @endif
                     @endforeach
                 </select>
