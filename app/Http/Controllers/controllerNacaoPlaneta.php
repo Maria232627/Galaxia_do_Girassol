@@ -25,7 +25,7 @@ class controllerNacaoPlaneta extends Controller
         $planeta = Planeta::find($id);
         $dados->nome = $planeta->nome;
         foreach($dados as $item){
-            $nacao = nacao::find($item->id);
+            $nacao = Nacao::find($item->id);
             $item->nome = $nacao->nome;
         }
         return view('exibeDetalhePlaneta', compact('dados'));
@@ -36,8 +36,7 @@ class controllerNacaoPlaneta extends Controller
      */
     public function create()
     {
-        $dados->nome = $request->input('qtd_ocupacao');
-        $dados->diametro = $request->input('tipo_colonizacao');
+       
     }
 
     /**
@@ -46,10 +45,10 @@ class controllerNacaoPlaneta extends Controller
     public function store(Request $request)
     {
         $dados = new NacaoPlaneta();
-        $dados->nome = $request->input('nome');
-        $dados->especie = $request->input('especie');
-        $dados->novel_dominacao = $request->input('nivel_dominacao');
-        $dados->nivel_desenv = $request->input('nivel_desenv');
+        $dados->nacao = $request->input('nacao');
+        $dados->planeta = $request->input('planeta');
+        $dados->qtd_ocupacao = $request->input('qtd_ocupacao');
+        $dados->tipo_colonizacao = $request->input('tipo_colonizacao');
         if($dados->save())
             return redirect('/nacao')->with('success', 'Nação criada com sucesso!');
         return redirect('/nacao')->with('danger', 'Você não teve poder suficiente para criar a Nação!');

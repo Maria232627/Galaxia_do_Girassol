@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('nacao_planetas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('qtd_ocupacao');
-            $table->integer('qtd_colonizacao');
+            $table->float('qtd_ocupacao');
+            $table->string('tipo_colonizacao');
             $table->timestamps();
             $table->unsignedBigInteger('nacao');
             $table->unsignedBigInteger('planeta');

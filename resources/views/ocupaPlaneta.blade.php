@@ -1,4 +1,3 @@
-@section('content')
 <div class="card border">
     <div class="card-body">
         <div class="jumbotron jumbotron-fluid">
@@ -11,25 +10,22 @@
             <div class="form-group">
                 <label for="sistema_planetario">Selecione o planeta dominado</label>
                 <select class="form-control" name="sistema_planetario" id="sistema" required>
-                    @foreach ($planeta as $item)
+                    @foreach ($dados $item)
                             <option value="{{$item->id}}">{{$item->nome}}</option>                      
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" class="form-control" name="nome" 
-                       placeholder="Informe o nome da nação">
-            </div>
-            <div class="form-group">
-                <label for="nome">Espécie:</label>
-                <input type="text" class="form-control" name="especie" 
-                       placeholder="Informe a espécie da nação">
-            </div>
-            <div class="form-group">
-                <label for="nome">Nivel de dominação:</label>
-                <input type="text" class="form-control" name="nivel_dominacao" 
+                <label for="nome">Quantidade de ocupação:</label>
+                <input type="text" class="form-control" name="qtd_ocupacao" 
                        placeholder="00%">
+            </div>
+            <div class="form-group">
+                <label for="nome">Tipo de colonização:</label>
+                <input type="radio" id="html" name="tipo_colonizacao" value="exploracao">
+                <label for="html">Exploração</label><br>
+                <input type="radio" id="html" name="tipo_colonizacao" value="povoamento">
+                <label for="html">Povoamento</label><br>
             </div>
             <div class="form-group">
                 <label for="nome">Nivel de desenvolvimento:</label>
@@ -44,4 +40,3 @@
         </form>
     </div> 
 </div> 
-@endsection

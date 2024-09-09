@@ -29,14 +29,8 @@
                 <input type="text" class="form-control" name="nivel_desenv" 
                        placeholder="00%">
             </div>
-            <div class="form-group">
-                <label for="planeta">Selecione o sistema planeta pertencente</label>
-                <select class="form-control" name="planeta" id="planeta" required>
-                    @foreach ($planeta as $item)
-                            <option value="{{$item->id}}">{{$item->nome}}</option>                      
-                    @endforeach
-                </select>
-            </div>
+            @component('ocupaPlaneta')
+            @endcomponent
             <button type="submit" class="btn btn-outline-primary btn-sm">Salvar</button>
             <button onclick="window.location.href='{{route('inicio')}}';" type="button" 
                     class="btn btn-outline-danger btn-sm">Cancelar</button>
