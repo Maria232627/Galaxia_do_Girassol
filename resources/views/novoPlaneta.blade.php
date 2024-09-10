@@ -49,6 +49,15 @@
                 <input type="float" class="form-control" name="qtd_satelite_natural" 
                        placeholder="0">
             </div>
+            <div class="form-group">
+                <label for="sistema_planetario">Selecione o sistema planetário pertencente</label>
+                <select class="form-control" name="sistema_planetario" id="sistema" required>
+                    @foreach ($sistema_planetario as $item)
+                            <option value="{{$item->id}}">{{$item->nome}}</option>                      
+                    @endforeach
+                </select>
+              </div>
+              
             <button type="submit" class="btn btn-outline-primary btn-sm">Salvar</button>
             <button onclick="window.location.href='{{route('inicio')}}';" type="button" 
                     class="btn btn-outline-danger btn-sm">Cancelar</button>

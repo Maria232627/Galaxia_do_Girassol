@@ -47,6 +47,8 @@ Route::get('/planeta/apagar/{id}', [App\Http\Controllers\controllerPlaneta::clas
 Route::get('/pesquisaPlaneta', [App\Http\Controllers\controllerPlaneta::class, 'pesquisarPlaneta'])->name('pesquisaPlaneta');
 Route::get('/procuraPlaneta', [App\Http\Controllers\controllerPlaneta::class, 'procurarPlaneta'])->name('procuraPlaneta');
 
+Route::get('/novoNacaoPlaneta/{id}', [App\Http\Controllers\controllerPlaneta::class, 'novaNacao'])->name('novoNacaoPlaneta');
+
 //rotas Nação
 Route::get('/nacao', [App\Http\Controllers\controllerNacao::class, 'index'])->name('exibeNacao');
 Route::get('/nacao/novo', [App\Http\Controllers\controllerNacao::class, 'create'])->name('novoNacao');
@@ -57,7 +59,8 @@ Route::get('/nacao/apagar/{id}', [App\Http\Controllers\controllerNacao::class, '
 Route::get('/pesquisaNacao', [App\Http\Controllers\controllerNacao::class, 'pesquisarNacao'])->name('pesquisaNacao');
 Route::get('/procuraNacao', [App\Http\Controllers\controllerNacao::class, 'procurarNacao'])->name('procuraNacao');
 
+
 //rotas Nação Planeta
-Route::post('/nacaoPlaneta/detalhes/{id}', [App\Http\Controllers\controllerNacaoPlaneta::class, 'store'])->name('exibeDetalhesNacao');
+Route::get('/nacaoPlaneta/detalhes/{id}', [App\Http\Controllers\controllerNacaoPlaneta::class, 'index'])->name('exibeDetalhesNacao');
 Route::get('/nacaoPlaneta/apagar/{id}', [App\Http\Controllers\controllerNacaoPlaneta::class, 'destroy'])->name('deletaNacaoPlaneta');
 Route::post('/nacaoPlaneta', [App\Http\Controllers\controllerNacaoPlaneta::class, 'store'])->name('gravaNovoNacaoPlaneta');

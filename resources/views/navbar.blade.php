@@ -13,7 +13,6 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="{{route('novoSistema')}}">Cadastrar Sistema Planetário</a>
             <a class="dropdown-item" href="{{route('exibeSistema')}}">Listar Sistema Planetário</a>
-            <a class="dropdown-item" href="{{route('pesquisaSistema')}}">Pesquisar Sistema Planetário</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -21,7 +20,6 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01">
                 <a class="dropdown-item" href="{{route('novoEstrela')}}">Cadastrar Estrela</a>
                 <a class="dropdown-item" href="{{route('exibeEstrela')}}">Listar Estrela</a>
-                <a class="dropdown-item" href="{{route('pesquisaEstrela')}}">Pesquisar Estrela</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -29,7 +27,6 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="{{route('novoPlaneta')}}">Cadastrar Planeta</a>
             <a class="dropdown-item" href="{{route('exibePlaneta')}}">Listar Planeta</a>
-            <a class="dropdown-item" href="{{route('pesquisaPlaneta')}}">Pesquisar Planeta</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -37,7 +34,6 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="{{route('novoNacao')}}">Cadastrar Nação</a>
             <a class="dropdown-item" href="{{route('exibeNacao')}}">Listar Nação</a>
-            <a class="dropdown-item" href="{{route('pesquisaNacao')}}">Pesquisar Nação</a>
           </div>
         </li>
       </ul>

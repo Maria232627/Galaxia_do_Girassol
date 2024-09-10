@@ -25,28 +25,34 @@
                         <th>Habitabilidade</th>
                         <th>Quantidade de satélites naturais</th>
                         <th>Sistema planetário</th>
-
-                        <th style="text-align:center" colspan="2">Ações</th>
+                        <th style="text-align:center" colspan="4">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dados as $item)
+                    @foreach ($dados as $item => $i)
                     <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->nome }}</td>
-                        <td>{{ $item->diametro }}</td>
-                        <td>{{ $item->descricao}}</td>
-                        <td>{{ $item->temperatura}}</td>
-                        <td>{{ $item->idade}}</td>
-                        <td>{{ $item->gravidade}}</td>
-                        <td>{{ $item->habitabilidade}}</td>
-                        <td>{{ $item->qtd_satelite_natural}}</td>
+                        <td>{{ $i['id'] }}</td>
+                        <td>{{ $i['nome'] }}</td>
+                        <td>{{ $i['diametro'] }}</td>
+                        <td>{{ $i['descricao'] }}</td>
+                        <td>{{ $i['temperatura'] }}</td>
+                        <td>{{ $i['idade'] }}</td>
+                        <td>{{ $i['gravidade'] }}</td>
+                        <td>{{ $i['habitabilidade'] }}</td>
+                        <td>{{ $i['qtd_satelite_natural'] }}</td>
+                        <td>{{ $i['sistema_planetario'] }}</td>
 
                         <td style="text-align:center">
-                            <a href="/planeta/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
+                                <a href="/novoNacaoPlaneta/{{$i['id']}}" class="btn btn-success">Cadastra Nação</a>
+                            </td>
+                            <td style="text-align:center">
+                            <a href="/nacaoPlaneta/detalhes/{{$i['id']}}" class="btn btn-secondary">Detalhes</a>
                         </td>
                         <td style="text-align:center">
-                            <a href="/planetas/apagar/{{$item->id}}" class="btn btn-outline-danger" 
+                            <a href="/planeta/editar/{{$i['id']}}" class="btn btn-outline-primary">Editar</a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="/planeta/apagar/{{$i['id']}}" class="btn btn-outline-danger" 
                                onclick="return confirm('Tem certeza de que deseja destruir esse planeta?');">Deletar</a>
                         </td>
                     </tr>  

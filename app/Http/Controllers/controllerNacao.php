@@ -12,8 +12,7 @@ class controllerNacao extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index(){
         $dados = Nacao::all();
         return view('exibeNacao', compact('dados'));
     }

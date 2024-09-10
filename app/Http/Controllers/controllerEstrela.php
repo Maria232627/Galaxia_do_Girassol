@@ -14,7 +14,7 @@ class controllerEstrela extends Controller
      */
     public function index()
     {
-        $dados = Estrela::all();
+        $dados = Estrela::with('sistema_planetario')->get();
         return view('exibeEstrela', compact('dados'));
     }
 
@@ -40,9 +40,9 @@ class controllerEstrela extends Controller
         $dados->idade = $request->input('idade');
         $dados->gravidade = $request->input('gravidade');
         $dados->sistema_planetario = $request-> input ('sistema_planetario');
-       // $sistema=SistemaPlanetario::find($dados->sistema_planetario);
-        //$sistema->qtd_estrela = $sistema->qtd_estrela + 1;
-        //$sistema->save();
+        $sistema=SistemaPlanetario::find($dados->sistema_planetario);
+        $sistema->qtd_estrela = $sistema->qtd_estrela + 1;
+        $sistema->save();
         if($dados->save())
             return redirect('/estrela')->with('success', 'Estrela criada com sucesso!');
         return redirect('/estrela')->with('danger', 'Você não teve poder suficiente para criar a estrela!');
@@ -62,9 +62,11 @@ class controllerEstrela extends Controller
     public function edit(string $id)
     {
         $dados = Estrela::find($id);
+        if(isset($dados)){
         $sistema_planetario = SistemaPlanetario::all();
         return view('editaEstrela',compact('dados', 'sistema_planetario'));
     }
+}
 
     /**
      * Update the specified resource in storage.
@@ -79,6 +81,7 @@ class controllerEstrela extends Controller
             $dados->temperatura = $request->input('temperatura');
             $dados->idade = $request->input('idade');
             $dados->gravidade = $request->input('gravidade');
+            $dados->sistema_planetario = $request->input('sistema_planetario');
             $dados->save();
             return redirect('/estrela')->with('success', 'Os dados da estrela foram modificados de acordo com vossa vontade. :)');
         }
@@ -92,6 +95,9 @@ class controllerEstrela extends Controller
     {
         $dados = Estrela::find($id);
         if(isset($dados)){
+            $sistema=SistemaPlanetario::find($dados->sistema_planetario);
+            $sistema->qtd_estrela = $sistema->qtd_estrela - 1;
+            $sistema->save();
             $dados->delete();
             return redirect('/estrela')->with('success', 'A estrela foi destruida. Você a eliminou... ');
         }
@@ -105,7 +111,7 @@ class controllerEstrela extends Controller
 
     public function procurarEstrela(Request $request){
         $dados = $request->input('nome');
-        $dados = DB::table('estrelas')->select('id', 'nome', 'diametro', 'descricao', 'temperatura', 'idade', 'gravidade')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
+        $dados = DB::table('estrelas')->select('id', 'nome', 'diametro', 'descricao', 'temperatura', 'idade', 'gravidade')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($dados->nome) . '%')->get();
         return view('exibirEstrela', compact('dados'));
     }
 }

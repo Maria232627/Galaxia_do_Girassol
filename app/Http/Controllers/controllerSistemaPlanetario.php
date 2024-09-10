@@ -32,7 +32,8 @@ class controllerSistemaPlanetario extends Controller
     {
         $dados = new SistemaPlanetario();
         $dados->nome = $request->input('nome');
-        //$dados->qtd_estrela = 0;
+        $dados->qtd_estrela = 0;
+        $dados->qtd_planeta = 0;
         if($dados->save())
             return redirect('/sistema')->with('success', 'Sistema Planetário criado com sucesso!');
         return redirect('/sistema')->with('danger', 'Você não teve poder suficiente para criar o Sistema Planetário!');

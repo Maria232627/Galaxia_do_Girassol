@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Planeta;
+use App\Models\NacaoPlaneta;
 use App\Models\SistemaPlanetario;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class controllerPlaneta extends Controller
      */
     public function index()
     {
-        $dados = Planeta::all();
+        $dados = Planeta::with('sistema_planetario')->get();
         return view('exibePlaneta', compact('dados'));
     }
 
@@ -41,9 +42,10 @@ class controllerPlaneta extends Controller
         $dados->gravidade = $request->input('gravidade');
         $dados->habitabilidade = $request->input('habitabilidade');
         $dados->qtd_satelite_natural = $request->input('qtd_satelite_natural');
-        //$sistema=SistemaPlanetario::find($dados->sistema_planetario);
-        //$sistema->qtd_planeta = $sistema->qtd_planeta + 1;
-        //$sistema->save();
+        $dados->sistema_planetario = $request-> input ('sistema_planetario');
+        $sistema=SistemaPlanetario::find($dados->sistema_planetario);
+        $sistema->qtd_planeta = $sistema->qtd_planeta + 1;
+        $sistema->save();
         if($dados->save())
             return redirect('/planeta')->with('success', 'Planeta criada com sucesso!');
         return redirect('/planeta')->with('danger', 'Você não teve poder suficiente para criar o planeta!');
@@ -64,8 +66,10 @@ class controllerPlaneta extends Controller
     public function edit(string $id)
     {
         $dados = Planeta::find($id);
-        $sistema_planetario = SistemaPlanetario::all();
-        return view('editaPlaneta',compact('dados', 'sistema_planetario'));
+        if(isset($dados)){
+           $sistema_planetario = SistemaPlanetario::all();
+           return view('editarPlaneta', compact('dados', 'sistema_planetario'));
+        }
     }
 
     /**
@@ -83,6 +87,7 @@ class controllerPlaneta extends Controller
             $dados->gravidade = $request->input('gravidade');
             $dados->habitabilidade = $request->input('habitabilidade');
             $dados->qtd_satelite_natural = $request->input('qtd_satelite_natural');
+            $dados->sistema_planetario = $request->input('sistema_planetario');
             $dados->save();
             return redirect('/planeta')->with('success', 'Os dados da planeta foram modificados de acordo com vossa vontade. :)');
         }
@@ -96,10 +101,15 @@ class controllerPlaneta extends Controller
     {
         $dados = Planeta::find($id);
         if(isset($dados)){
+            $sistema=SistemaPlanetario::find($dados->sistema_planetario);
+            $sistema->qtd_planeta = $sistema->qtd_planeta - 1;
+            $sistema->save();
             $dados->delete();
-            return redirect('/planeta')->with('success', 'A planeta foi destruida. Você a eliminou... ');
+            return redirect('/planeta')->with('success', 'O planeta foi destruida. Você a eliminou... ');
+        }else{
+            return redirect('/planeta')->with('danger', 'Planeta não localizado!!');
         }
-        return redirect('/planeta')->with('danger', 'O seu poder não foi suficiente para destruir a planeta. Erro ao aliminá-la.');
+        
     }
 
     public function pesquisarPlaneta(){
@@ -111,5 +121,15 @@ class controllerPlaneta extends Controller
         $dados = $request->input('nome');
         $dados = DB::table('planetas')->select('id', 'nome', 'diametro', 'descricao', 'temperatura', 'idade', 'gravidade', 'habitabilidade', 'qtd_satelite_natural')->where(DB::raw('lower(nome)'), 'like', '%' . strtolower($nome) . '%')->get();
         return view('exibirPlaneta', compact('dados'));
+    }
+    public function novaNacao($id){
+        $dados = DB::table('nacaos')->orderBy('nome')->get();
+        if(isset($dados)){
+            $planeta = Planeta::find($id);
+            $dados->nome = $planeta->nome;
+            $dados->id = $id;
+            return view('novoNacaoPlaneta', compact('dados'));
+        }
+        return redirect('/planeta')->with('danger', 'Não há autores cadastrados!!');
     }
 }

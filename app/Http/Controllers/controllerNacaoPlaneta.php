@@ -16,17 +16,17 @@ class controllerNacaoPlaneta extends Controller
     private $NacaoPlaneta;
 
     public function __construct(NacaoPlaneta $item){
-        $this->NacaoPlaneta = $item;
+        $this->NacaoPlanetas = $item;
     }
 
-    public function index()
+    public function index(string $id)
     {
-        $dados = $this->NacaoPlaneta->where('planeta',$id)->get();
+        $dados = $this->NacaoPlanetas->where('planeta',$id)->get();
         $planeta = Planeta::find($id);
-        $dados->nome = $planeta->nome;
+        $dados->nomePlaneta = $planeta->nome;
         foreach($dados as $item){
-            $nacao = Nacao::find($item->id);
-            $item->nome = $nacao->nome;
+            $nacao = Nacao::find($item->nacao);
+            $item->nomeNacao = $nacao->nome;
         }
         return view('exibeDetalhePlaneta', compact('dados'));
     }
@@ -49,9 +49,10 @@ class controllerNacaoPlaneta extends Controller
         $dados->planeta = $request->input('planeta');
         $dados->qtd_ocupacao = $request->input('qtd_ocupacao');
         $dados->tipo_colonizacao = $request->input('tipo_colonizacao');
+        $id = $dados->planeta;
         if($dados->save())
-            return redirect('/nacao')->with('success', 'Nação criada com sucesso!');
-        return redirect('/nacao')->with('danger', 'Você não teve poder suficiente para criar a Nação!');
+            return redirect("/nacaoPlaneta/detalhes/$id")->with('success', 'Nação criada com sucesso!');
+        return redirect('/planeta')->with('danger', 'Você não teve poder suficiente para criar a Nação!');
     }
 
 
@@ -90,8 +91,9 @@ class controllerNacaoPlaneta extends Controller
         $dados = NacaoPlaneta::find($id);
         if(isset($dados)){
             $dados->delete();
-            return redirect('/nacao')->with('success', 'A Nação foi destruida. Você a eliminou... ');
+            return redirect("/planeta")->with('success', 'A Nação foi destruida. Você a eliminou... ');
         }
-        return redirect('/nacao')->with('danger', 'O seu poder não foi suficiente para destruir a Nação. Erro ao aliminá-la.');
+        return redirect("/planeta")->with('danger', 'O seu poder não foi suficiente para destruir a Nação. Erro ao aliminá-la.');
     }
+    
 }

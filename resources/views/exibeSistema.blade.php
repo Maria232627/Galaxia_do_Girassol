@@ -28,8 +28,8 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nome }}</td>
-                        <td>{{ $item->qtd_estrela }}</td> 
-                        <td>{{ $item->qtd_planeta }}</td>
+                        <td>{{ $item->qtd_planeta }}</td> 
+                        <td>{{ $item->qtd_estrela }}</td>
 
                         <td style="text-align:center">
                             <a href="/sistema/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
